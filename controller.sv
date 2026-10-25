@@ -5,12 +5,12 @@ module controller (
     input logic [6:0] op,
     input logic [2:0] func3,
     input logic       func7,
+    input logic       alu_zero,
 
     output logic [2:0] alu_control,
     output logic [1:0] imm_src,
     output logic       mem_write,
     output logic       reg_write
-
 );
 
 

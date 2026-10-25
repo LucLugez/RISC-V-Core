@@ -7,6 +7,7 @@ module controller_tb;
 logic [6:0] op;
 logic [2:0] func3;
 logic       func7;
+logic       alu_zero;
 
 // Outputs from DUT
 logic [2:0] alu_control;
@@ -20,6 +21,7 @@ controller ctrl_test (
     .op         (op),
     .func3      (func3),
     .func7      (func7),
+    .alu_zero   (alu_zero),
     .alu_control(alu_control),
     .imm_src    (imm_src),
     .mem_write  (mem_write),
