@@ -2,7 +2,8 @@
 // File description: Defines the behavior of the data memory for the RISC-V CPU
 
 module memory#(
-    parameter WORDS = 64
+    parameter WORDS = 64,
+    parameter mem_init = ""
 )(
     
     input logic [31:0] address,
