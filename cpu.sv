@@ -166,4 +166,23 @@ alu alu_top(
 
 //-----------------------
 
+
+
+//----------DATA MEMORY----------
+memory #(
+    .mem_init("./test_dmemory.hex")
+) data_memory(
+    // Inputs
+    .clk       (clk),
+    .address   (alu_result),
+    .write_data(32'b0),
+    .write_en  (1'b0),
+    .rst       (rst),
+
+    // Outputs
+    .read_data (mem_read)
+);
+
+//-------------------------------
+
 endmodule
