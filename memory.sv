@@ -19,6 +19,9 @@ module memory#(
 // Declare 64 empty spots, each being 32 bits long, for the memory
 logic [31:0] mem[0:WORDS-1];
 
+initial begin
+    $readmemh(mem_init, mem); // Load memory for simulation
+end
 
 // Memory behavior
 always_ff @(posedge clk) begin

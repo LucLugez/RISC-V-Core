@@ -78,4 +78,52 @@ controller ctrl_top(
 //-------------------------------
 
 
+
+// ----------REGFILE-------------
+// Inputs to regfile
+logic [4:0] source_reg1;
+assign source_reg1 = instruction[19:15];
+logic source_reg2;
+assign source_reg2 = instruction[24:20];
+logic [4:0] dest_reg;
+assign dest_reg = instruction[11:7];
+
+// Outputs from regfile
+logic [31:0] read_reg1;
+logic [31:0] read_reg2;
+
+// Write back to regfile
+logic [31:0] mem_read;
+logic [31:0] write_back_data; 
+
+always_comb begin : write_back_select
+    // Need to add more features depending on instruction
+    write_back_data = mem_read;
+end
+
+regfile regfile_top(
+    // Clock and reset
+    .clk(clk),
+    .rst(rst),
+
+    // Read input
+    .address_1(source_reg1),
+    .address_2(source_reg2),
+    // Read output
+    .read_data_1(read_reg1),
+    .read_data_2(read_reg2),
+
+    // Write input
+    .write_en(reg_write), // From controller
+    .address3(dest_reg),
+    .write_data(write_back_data) // Depends on instruction
+);
+
+//-------------------------------
+
+
+
+
+
+
 endmodule
