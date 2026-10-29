@@ -79,7 +79,7 @@ controller ctrl_top(
 
 
 
-// ----------REGFILE-------------
+// ----------REGFILE----------
 // Inputs to regfile
 logic [4:0] source_reg1;
 assign source_reg1 = instruction[19:15];
@@ -119,11 +119,27 @@ regfile regfile_top(
     .write_data(write_back_data) // Depends on instruction
 );
 
-//-------------------------------
+//-----------------------------
 
 
 
+//----------SIGN EXTENDER----------
+// Inputs to signextender
+logic [24:0] raw_src;
+assign raw_src = instruction[31:7]; // First 24 bits of instruction
 
+// Outputs from signextender
+logic imm_ext;
+
+signextender sign_ex_top(
+    // Inputs
+    .imm_src(imm_src), // From controller
+    .raw_src(raw_src),
+    // Outputs
+    .imm_ext(imm_ext)
+);
+
+//---------------------------------
 
 
 endmodule
