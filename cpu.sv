@@ -72,7 +72,7 @@ controller ctrl_top(
     .alu_control(alu_control),
     .imm_src    (imm_src),
     .mem_write  (mem_write),
-    .reg_write  (reg_write),
+    .reg_write  (reg_write)
 );
 
 //-------------------------------
@@ -141,5 +141,29 @@ signextender sign_ex_top(
 
 //---------------------------------
 
+
+
+//----------ALU----------
+logic [31:0] alu_srcB;
+logic [31:0] aluResult;
+
+always_comb begin : srcBselect
+    alu_srcB = imm_ext; // For now set srcB as the immediate, but more functionality later
+end
+
+alu alu_top(
+    // Control
+    .aluControl(alu_control), // From controller
+    
+    // Inputs
+    .srcA(read_reg1), // srcA from register always?
+    .srcB(alu_srcB),
+
+    // Output
+    .aluResult(aluResult),
+    .zero_flag(alu_zero) // Input to the controller
+);
+
+//-----------------------
 
 endmodule

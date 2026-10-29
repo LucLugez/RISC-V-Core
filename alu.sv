@@ -7,6 +7,7 @@ module alu(
     input logic [2:0]   aluControl,
 
     output logic [31:0] aluResult
+    output logic        zero_flag
 );
 
 // Describe ALU combinational logic
@@ -18,5 +19,7 @@ always_comb begin
 
     endcase
 end
+
+assign zero_flag = aluResult == 32'b0;
 
 endmodule
