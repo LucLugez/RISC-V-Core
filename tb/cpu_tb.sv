@@ -37,12 +37,13 @@ initial begin
     rst = 0;
 
     // Step through several clock cycles
-    repeat (5) begin
+    repeat (7) begin
         #1; // Wait for combinational logic to settle after posedge
-        $display("Time: %0t | PC: 0x%08h | Instr: 0x%08h | ALU Addr: 0x%08h | MemRead: 0x%08h | RegWrite: %b | DestReg: x%0d",
-                    $time, cpu_test.pc, cpu_test.instruction, cpu_test.aluResult, cpu_test.mem_read, cpu_test.reg_write, cpu_test.dest_reg);
+        $display("Time: %0t | PC: 0x%08h | Instr: 0x%08h | ALU Addr: 0x%08h | MemRead: 0x%08h | RegWrite: %b | MemWrite: %b | DestReg: x%0d | ReadReg2: %08h",
+                    $time, cpu_test.pc, cpu_test.instruction, cpu_test.aluResult, cpu_test.mem_read, cpu_test.reg_write, cpu_test.mem_write, cpu_test.dest_reg, cpu_test.read_reg2);
         @(posedge clk);
     end
+
 
     $display("Test Complete.");
     $finish;

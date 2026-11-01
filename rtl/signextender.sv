@@ -13,8 +13,10 @@ logic [11:0] immediate;
 // Describe how to get the immediate
 always_comb begin
     case (imm_src)
+        // I-Type
         2'b00       :   immediate = raw_src[24:13];
         
+        // S-Type
         2'b01       :   immediate = {raw_src[24:18], raw_src[4:0]};
 
         default :   immediate = 12'b0;

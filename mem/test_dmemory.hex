@@ -1,9 +1,6 @@
-DEADBEEF  // at address 0
-CAFEBABE
-12345678
-00000000
-AAAAAAAA
-00000000
-00000000
-00000000
-BBBBBBBB
+DEADBEEF  // address 0x0
+CAFEBABE  // address 0x4
+12345678  // address 0x8
+00000000  // address 0xC
+00000000  // address 0x10
+00000000  // address 0x14

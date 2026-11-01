@@ -175,8 +175,8 @@ memory #(
     // Inputs
     .clk       (clk),
     .address   (aluResult),
-    .write_data(32'b0),
-    .write_en  (1'b0),
+    .write_data(read_reg2),
+    .write_en  (mem_write),
     .rst       (1'b0),
 
     // Outputs

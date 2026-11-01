@@ -20,7 +20,7 @@ logic [1:0] alu_op;
 // Main decoder logic
 always_comb begin
     case (op)
-        // lw instruction
+        // this op code is the same for lw, lb, lh, lbu, lhu. Func3 is what differentiates them, so will need to add that likely.
         7'b0000011 : begin
             reg_write = 1'b1;
             imm_src = 2'b00;
@@ -28,6 +28,14 @@ always_comb begin
             alu_op = 2'b00;
         end
         
+        // all S-Type instructions (sw, sb, sh) share this op. Func3 differentiates them.
+        7'b0100011 : begin
+            reg_write = 1'b0;
+            imm_src = 2'b01;
+            mem_write = 1'b1;
+            alu_op = 2'b00;
+        end
+
         default : begin
             reg_write = 1'b0;
             imm_src = 2'b00;

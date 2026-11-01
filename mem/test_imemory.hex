@@ -1,5 +1,7 @@
 00002083  // lw x1, 0(x0)
 00402103  // lw x2, 4(x0)
-00802183  // lw x3, 8(x0)
-00000000  // nop
+00102623  // sw x1, 12(x0)  stores what was loaded into a new address in data memory
+00202823  // sw x2, 16(x0)
+00c02203  // lw x4, 12(x0)  checks that the sw instruction worked
+01002283  // lw x5, 16(x0)
 00000000  // nop
