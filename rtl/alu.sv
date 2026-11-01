@@ -6,7 +6,7 @@ module alu(
     input logic [31:0]  srcB,
     input logic [2:0]   aluControl,
 
-    output logic [31:0] aluResult
+    output logic [31:0] aluResult,
     output logic        zero_flag
 );
 

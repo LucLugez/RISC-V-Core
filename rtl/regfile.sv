@@ -7,7 +7,7 @@ module regfile(
     input logic [4:0]  address_3,
     input logic [31:0] write_data,
     input logic        write_en,
-    input logic        reset,
+    input logic        rst,
     input logic        clk,
 
     output logic [31:0] read_data_1,
@@ -21,7 +21,7 @@ logic [31:0] registers[0:31];
 // Describe clocking behavior
 always_ff @(posedge clk) begin
     // Active high reset
-    if (reset) begin
+    if (rst) begin
         // All registers get zero
         for (int i = 0; i < 32; i++) begin
             registers[i] <= 32'b0;

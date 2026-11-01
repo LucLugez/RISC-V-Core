@@ -10,7 +10,7 @@ module memory#(
     input logic [31:0] write_data,
     input logic        clk,
     input logic        write_en,
-    input logic        reset,
+    input logic        rst,
 
     output logic [31:0] read_data
 );
@@ -26,7 +26,7 @@ end
 // Memory behavior
 always_ff @(posedge clk) begin
     // When reset goes high, all data in mem becomes zero
-    if (reset) begin
+    if (rst) begin
         for (int i = 0; i < WORDS; i++) begin
             mem[i] <= 32'b0;
         end

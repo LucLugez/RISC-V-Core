@@ -3,7 +3,7 @@
 
 module signextender(
     input logic [24:0] raw_src,
-    input logic imm_src,
+    input logic [1:0]  imm_src,
 
     output logic [31:0] imm_ext
 ); 
@@ -13,9 +13,9 @@ logic [11:0] immediate;
 // Describe how to get the immediate
 always_comb begin
     case (imm_src)
-        0       :   immediate = raw_src[24:13];
+        2'b00       :   immediate = raw_src[24:13];
         
-        1       :   immediate = {raw_src[24:18], raw_src[4:0]};
+        2'b01       :   immediate = {raw_src[24:18], raw_src[4:0]};
 
         default :   immediate = 12'b0;
     endcase
